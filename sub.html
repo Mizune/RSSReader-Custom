@@ -19,14 +19,13 @@
         body{
             background:#3366cc;
         }
-        #RealtimeClock{
+        #clock-01{
             font-size:24px;
-            color:#BBBBBB;
+            font-color:#BBBBBB;
             text-align:center;
             margin-top:10px;
             border:solid 1px #424242;
             box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
-            font-style: italic;
         }
         h1 {
             color:#00ccff;
@@ -36,10 +35,34 @@
             background:#FFAA33;
         }
     </style>
-    lock;
+    <script>
+        function clock() {
+            var nowtime  = new Date();
+            var year = nowtime.getFullYear(); // 年
+            var month = nowtime.getMonth()+1; // 月
+            var date = nowtime.getDate(); // 日
+            var day = nowtime.getDay();
+            var hour = nowtime.getHours(); // 時
+            var min  = nowtime.getMinutes(); // 分
+            var sec  = nowtime.getSeconds(); // 秒
+
+        // 数値が1桁の場合、頭に0を付けて2桁で表示する指定
+            if(hour < 10) { hour = "0" + hour; }
+            if(min < 10) { min = "0" + min; }
+            if(sec < 10) { sec = "0" + sec; }
+
+        // フォーマット①
+            var clock1 = year + '/' +  month + "/" + date + " " + hour + ':' + min + ':' + sec;
+
+            document . getElementById( 'clock-01' ) . innerHTML= clock1 . toLocaleString(); // div id="clock-01"
+
+        // 1000ミリ秒ごとに処理を実効
+            window . setTimeout( "clock()", 1000);
+            }
+        window . onload = clock;
     </script>
 </head>
-<body>
+<body onLoad="startfunc()">
     <input type="checkbox" value="" id="is-open" style="display: none;"/>
     <div id="main-container" class="">
         <header>
@@ -52,28 +75,8 @@
         </header>
     </div>
     <nav>
-        <p id="RealtimeClock"></p>
-        <script type="text/javascript">
-        function set2fig(num) {
-           // 桁数が1桁だったら先頭に0を加えて2桁に調整する
-           var ret;
-           if( num < 10 ) { ret = "0" + num; }
-           else { ret = num; }
-           return ret;
-        }
-        function showClock() {
-           var nowTime = new Date();
-           var nowYear = nowTime.getFullYear();
-           var nowMonth = nowTime.getMonth();
-           var nowDate = nowTime.getDate();
-           var nowHour = set2fig( nowTime.getHours() );
-           var nowMin = set2fig( nowTime.getMinutes() );
-           var nowSec = set2fig( nowTime.getSeconds() );
-           var msg = nowYear + "/" + nowMonth + "/" + nowDate + " " + nowHour + ":" + nowMin + ":" + nowSec;
-           document.getElementById("RealtimeClock").innerHTML = msg;
-        }
-        setInterval('showClock()',1000);
-        </script>
+        <div id="clock-01"></div>
+        <div id="clock-02"></div>
         <h1>Yuki's Reader</h1>
         <div id="register-rss">
             <input type="url" value="" placeholder="RSS URL" />
