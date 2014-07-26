@@ -13,8 +13,60 @@
         google.load("feeds", "1");
     </script>
     <script src="scripts/app.js"></script>
+    <style>
+        body{
+            background:#3366cc;
+        }
+        #clock-01{
+            font-size:24px;
+            font-color:#BBBBBB;
+            text-align:center;
+            margin-top:10px;
+            border:solid 1px #424242;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+        }
+        h1 {
+            color:#00ccff;
+        }
+
+        #addbtn:hover{
+            background:#FFAA33;
+        }
+    </style>
+
+    <script>
+        function clock() {
+        var myDay = new Array("日","月","火","水","木","金","土");
+        var now  = new Date();
+        var year = now.getFullYear(); // 年
+        var month = now.getMonth()+1; // 月
+        var date = now.getDate(); // 日
+        var day = now.getDay();
+        var hour = now.getHours(); // 時
+        var min  = now.getMinutes(); // 分
+        var sec  = now.getSeconds(); // 秒
+
+        // 数値が1桁の場合、頭に0を付けて2桁で表示する指定
+        if(hour < 10) { hour = "0" + hour; }
+        if(min < 10) { min = "0" + min; }
+        if(sec < 10) { sec = "0" + sec; }
+
+        // フォーマット①
+        var clock1 = year + '/' +  month + "/" + date + " " + hour + ':' + min + ':' + sec;
+
+        document . getElementById( 'clock-01' ) . innerHTML= clock1 . toLocaleString(); // div id="clock-01"
+
+        // 1000ミリ秒ごとに処理を実効
+        window . setTimeout( "clock()", 1000);
+        }
+        window . onload = clock;
+    </script>
+
+
+
+
 </head>
-<body>
+<body onLoad="startfunc()">
     <input type="checkbox" value="" id="is-open" style="display: none;"/>
     <div id="main-container" class="">
         <header>
@@ -23,14 +75,16 @@
                 <span></span>
                 <span></span>
             </label>
-            <h1>My Rss Reader</h1>
+            <h1>Yuki's Reader</h1>
         </header>
     </div>
     <nav>
-        <h1>My Rss Reader</h1>
+        <div id="clock-01"></div>
+        <div id="clock-02"></div>
+        <h1>Yuki's Reader</h1>
         <div id="register-rss">
             <input type="url" value="" placeholder="RSS URL" />
-            <button>Add</button>
+            <button id="addbtn">Add</button>
         </div>
     </nav>
 </body>
