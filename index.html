@@ -6,34 +6,6 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">  
     <title>My Rss Reader</title>
     <link href="styles/style.css" rel="stylesheet" />
-    <script src="lib/jquery-2.1.1.min.js"></script>
-    <script src="lib/jquery.storageapi.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("feeds", "1");
-    </script>
-    <script src="scripts/app.js"></script>
-    <style>
-        body{
-            background:#3366cc;
-        }
-        #clock-01{
-            font-size:24px;
-            font-color:#BBBBBB;
-            text-align:center;
-            margin-top:10px;
-            border:solid 1px #424242;
-            box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
-        }
-        h1 {
-            color:#00ccff;
-        }
-
-       /* #addbtn:hover{
-            background:#FFAA33;
-        }*/
-    </style>
-
     <script>
         function clock() {
         var myDay = new Array("日","月","火","水","木","金","土");
@@ -61,6 +33,34 @@
         }
         window . onload = clock;
     </script>
+    <script src="lib/jquery-2.1.1.min.js"></script>
+    <script src="lib/jquery.storageapi.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("feeds", "1");
+    </script>
+    <script src="scripts/app.js"></script>
+    <style>
+        body{
+            background:#3366cc;
+        }
+        #clock-01{
+            font-size:24px;
+            font-color:#BBBBBB;
+            text-align:center;
+            margin-top:10px;
+            border:solid 1px #424242;
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+        }
+        h1 {
+            color:#00ccff;
+        }
+
+        #addbtn:hover{
+            background:#FFAA33;
+        }
+    </style>
+
 
 
 
@@ -84,7 +84,7 @@
         <h1>Yuki's Reader</h1>
         <div id="register-rss">
             <input type="url" value="" placeholder="RSS URL" />
-            <button>Add</button>
+            <button id="addbtn">Add</button>
         </div>
     </nav>
 </body>
