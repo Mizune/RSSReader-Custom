@@ -1,4 +1,5 @@
 ﻿/// <reference path="typings/jquery/jquery.d.ts" />
+/// <reference path="typings/jquery/jquery.d.ts" />
 /// <reference path="typings/google.feeds/google.feed.api.d.ts" />
 /// <reference path="typings/jquery.storageapi/jquery.storageapi.d.ts" />
 var info = {

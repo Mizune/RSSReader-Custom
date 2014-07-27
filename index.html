@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">  
-    <title>My Rss Reader</title>
+    <title>Rss Reader</title>
     <link href="styles/style.css" rel="stylesheet" />
 
     <script src="lib/jquery-2.1.1.min.js"></script>
@@ -35,8 +35,47 @@
         #addbtn:hover{
             background:#FFAA33;
         }
+
+
+        #pagetopbtn{
+            display:none;
+            position: fixed;
+            bottom:30px;
+            right:55px;
+
+        }
+
+        #pagetopbtn a{
+            diplay:block;
+            width:50px;
+            height:50px;
+            background-color:#333;
+            text-align:center;
+            color:#fff;
+            font-size:24px;
+            text-decoration:none;
+            line-height:50px;
+        }
+
     </style>
-    lock;
+    <script>
+
+        $document.ready(function(){
+            var pagetop = $('.pagetopbtn');
+            $(window).scroll(function(){
+                if( $(this).scrollTop() > 0){
+                    pagetop.fadeIn();
+                } else {
+                    pagetop.fadeOut();
+                }
+            });
+
+            pagetop.click(function(event) {
+                $('body, html').animate({scrollTop:0},500);
+                    return false;
+            });
+        });
+
     </script>
 </head>
 <body>
@@ -48,7 +87,7 @@
                 <span></span>
                 <span></span>
             </label>
-            <h1>Yuki's Reader</h1>
+            <h1>RSS Reader</h1>
         </header>
     </div>
     <nav>
@@ -74,7 +113,7 @@
         }
         setInterval('showClock()',1000);
         </script>
-        <h1>Yuki's Reader</h1>
+        <h1>RSS Reader</h1>
         <div id="register-rss">
             <input type="url" value="" placeholder="RSS URL" />
             <button id="addbtn">Add</button>
